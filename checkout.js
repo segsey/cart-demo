@@ -1,9 +1,14 @@
-export  let item = document.getElementById("cart-item");
+// import { showCart } from "./cart-module";
+import {remove} from './module/cart-module.js'
+import {item} from './index.js'
+import { newTotal } from './module/cart-module.js';
+import { total } from './index.js';
 
-export let checkOut = (output, i) => {
+export let checkOut = (product) => {
+  
   let parentdiv = document.createElement("div");
   parentdiv.classList.add("d-flex", "justify-content-between", "bg-light-subtle", "rounded", "p-4", "shadow");
-  item.appendChild(parentdiv);
+
 
   // right side(image and product description)
   let div1 = document.createElement('div');
@@ -12,7 +17,7 @@ export let checkOut = (output, i) => {
 
   let image = document.createElement("img");
   image.classList.add("img-fluid", "w-25");
-  image.src = output[i].image;
+  image.src = product.image;
   div1.appendChild(image);
 
   let productDetails = document.createElement("div");
@@ -21,23 +26,23 @@ export let checkOut = (output, i) => {
 
   let productName = document.createElement("div")
   productName.classList.add("fs-5");
-  productName.innerHTML = `${output[i].title.slice(0, 10)}` + "...";
+  productName.innerHTML = `${product.title.slice(0, 10)}` + "...";
   productDetails.appendChild(productName);
 
   let classes = ["fw-bold", "text-body-secondary"];
   let description = document.createElement("div");
   description.classList.add(...classes);
-  description.innerHTML = `Description: ${output[i].category}`;
+  description.innerHTML = `Description: ${product.category}`;
   productDetails.appendChild(description);
 
   let price = document.createElement("div");
   price.classList.add(...classes);
-  price.innerHTML = `Prices: $${output[i].price}`;
+  price.innerHTML = `Prices: $${product.price}`;
   productDetails.appendChild(price);
 
   let quantity = document.createElement("div");
   quantity.classList.add(...classes);
-  let count = 1;
+  let count = product.quantity;
   quantity.innerHTML = count;
   productDetails.appendChild(quantity);
 
@@ -50,12 +55,16 @@ export let checkOut = (output, i) => {
   let cancel = document.createElement("button");
   cancel.classList.add("btn", "btn-danger");
   div2.appendChild(cancel);
-  cancel.addEventListener("click", () =>{
+  cancel.addEventListener("click", () => {
+    remove(product);
     parentdiv.remove();
+    total.innerHTML = newTotal;
   })
 
 
   let icon = document.createElement("i");
   icon.classList.add("bi", "bi-x-lg");
   cancel.append(icon);
+
+  return parentdiv
 }

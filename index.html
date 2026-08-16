@@ -15,7 +15,7 @@
         Hello world
       </h1>
       <div>
-        <button class="btn btn-primary px-4 py-0 position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+        <button id="show-cart" class="btn btn-primary px-4 py-0 position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
           <i class="bi bi-cart2 fs-3"></i> 
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="item-counter">
             
@@ -23,27 +23,28 @@
         </button>
       </div>
     </div>
-    <div class="row justify-content-between align-item-stretch g-3" id="flash-sales-row">
+    <div class="row justify-content-between align-item-stretch g-3" id="product-row">
       
     </div>
 
     
 
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
-          Check Out Page
-        </h5>
+      <div class="offcanvas-header d-flex align-items-center">
+        <div class="d-flex align-items-center flex-grow-1 justify-content-end">
+          <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+            Checkout Page
+          </h5>
+          <h5 class="offcanvas-title ms-auto me-3 text-danger">
+            $ <span id="total"></span>
+          </h5>
+        </div>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <div class="offcanvas-body position-relative">
+      <div class="offcanvas-body">
         <div class="d-flex flex-column justify-content-between h-100">
           <div class="d-flex flex-column gap-3" id="cart-item">
             
-          </div>
-
-          <div class="fw-bold position-fixed bottom-0 start-0 bg-white p-3 w-25" id="total">
-            Total: $500
           </div>
         </div>
       </div>
